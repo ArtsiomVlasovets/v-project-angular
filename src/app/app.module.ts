@@ -8,6 +8,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { StatisticPageComponent } from './components/statistic-page/statistic-page.component';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,9 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

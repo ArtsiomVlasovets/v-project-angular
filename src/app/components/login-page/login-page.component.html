@@ -1,16 +1,46 @@
-<div class="col-6 offset-3 header-content hide-class">
-  <form action="">
-    <div class="group">
-      <input type="email" name="" id="" placeholder=" " required>
-      <label>Email</label>
-    </div>
-    <div class="group">
-      <input type="password" name="" id="" placeholder=" " required>
-      <label>Password</label>
-    </div>
-    <div class="group">
-        <a href="#">or register</a>
-        <button type="submit" name="button">Login</button>
+
+    <div class="header-column">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 offset-3 header-content">
+              <form 
+                [formGroup]="form"
+                action=""
+                (ngSubmit)="onSubmit()"
+              >
+                <div class="group">
+                  <input 
+                    type="email"
+                    formControlName="email" 
+                    id="email" 
+                    placeholder=" " 
+                    [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}"
+                    required
+                  >
+                  <label>Email</label>
+                </div>
+                <div class="group">
+                  <input 
+                    type="password" 
+                    formControlName="password" 
+                    id="password" 
+                    placeholder=" " 
+                    [ngClass]="{'invalid': form.get('password').invalid && form.get('password').touched}"
+                    required
+                  >
+                  <label>Password</label>
+                </div>
+                <div class="group">
+                  <a routerLink='/register' >or register</a>
+                  <button 
+                    type="submit" 
+                    name="button"
+                    [disabled]="form.invalid || form.disabled"
+                  >Login</button>                  
+                </div>
+              </form>
+            </div>
+          </div>
+  
+        </div>
       </div>
-  </form>
-</div>

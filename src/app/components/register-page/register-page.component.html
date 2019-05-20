@@ -1,16 +1,43 @@
-<div class="col-6 offset-3 header-content" >
-  <form action="">
-    <div class="group">
-      <input type="email" name="" id="" placeholder=" " required>
-      <label>Email</label>
-    </div>
-    <div class="group">
-      <input type="password" name="" id="" placeholder=" " required>
-      <label>Password</label>
-    </div>
-    <div class="group">
-      <a href="#">or login</a>
-      <button type="submit" name="button">Register</button>
-    </div>
-  </form>
-</div>
+
+    <div class="header-column">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 offset-3 header-content">
+              <form 
+                [formGroup]="form"
+                (ngSubmit)="onSubmit()"
+              >
+                <div class="group">
+                  <input 
+                    type="email" 
+                    formControlName="email" 
+                    id="email" 
+                    placeholder=" " 
+                    required
+                  >
+                  <label>Email</label>
+                </div>
+                <div class="group">
+                  <input 
+                    type="password" 
+                    formControlName="password" 
+                    id="password" 
+                    placeholder=" " 
+                    required
+                  >
+                  <label>Password</label>
+                </div>
+                <div class="group">
+                  <a routerLink='/login'>or login</a>
+                  <button 
+                    type="submit" 
+                    name="button"
+                  >
+                    Register
+                </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
