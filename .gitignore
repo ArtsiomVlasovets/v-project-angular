@@ -44,3 +44,26 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+OLD
+.vscode/
+.DS_Store
+node_modules
+.tmp
+.idea
+.log
+dist
+docs
+.env
+npm-debug.log
+.nyc_output
+coverage
+cassettes
+DOCS.md
+README_API.md
+src/api/utils/v1/countries.json
+*.swp
+*.vim
+.undodir/
+package-lock.json
+client
