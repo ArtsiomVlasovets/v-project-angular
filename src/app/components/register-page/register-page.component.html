@@ -13,6 +13,7 @@
                     formControlName="email" 
                     id="email" 
                     placeholder=" " 
+                    [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched }"
                     required
                   >
                   <label>Email</label>
@@ -23,6 +24,7 @@
                     formControlName="password" 
                     id="password" 
                     placeholder=" " 
+                    [ngClass]="{'invalid': form.get('password').invalid && form.get('password').touched}"
                     required
                   >
                   <label>Password</label>
@@ -32,6 +34,7 @@
                   <button 
                     type="submit" 
                     name="button"
+                    [disabled]="form.invalid || form.disabled"
                   >
                     Register
                 </button>

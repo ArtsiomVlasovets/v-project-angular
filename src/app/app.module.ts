@@ -10,6 +10,15 @@ import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.co
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+
+
+console.log('localStorage.getItem :', localStorage.getItem('auth-token'));
+
+export function tokenGetter() {
+  console.log('localStorage.getItem :', localStorage.getItem('auth-token'));
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

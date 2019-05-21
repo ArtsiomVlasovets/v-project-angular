@@ -1,1 +1,24 @@
-<h1>SECTION</h1>
+<div class="main-block">
+
+    <ul class="statsList" *ngFor="let stats of statsList" href="stats.email">
+        <li>
+            {{stats.email}}
+        </li>
+        <li>
+            {{stats.games}}
+        </li>
+        <li>
+            {{stats.age}}
+        </li>
+        <li>
+            {{stats.PPG}}
+        </li>
+        <li>
+            {{stats.RPG}}
+        </li>
+        <li>
+            {{stats.APG}}
+        </li>
+    </ul>
+
+</div>

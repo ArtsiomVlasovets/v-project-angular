@@ -35,13 +35,17 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit() {
 
+
+    if(this.form.invalid) {
+      alert('this.form.invalid');
+    }
     console.log('Submit');
     
-    // this.form.disable()
+    this.form.disable()
     this.sub = this.auth.login(this.form.value).subscribe(() => {
       this.router.navigate(['/statistics'])
     }, error => {
-      // this.form.enable()
+      this.form.enable()
       alert(error.error.message);
       console.log(error.error.message);
     })

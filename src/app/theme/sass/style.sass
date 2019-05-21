@@ -1,0 +1,117 @@
+@import "vars"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow-x: hidden
+	color: $text
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+
+
+.nav
+	width: 13%
+	background-color: #1E1E1E
+	position: fixed
+	left: -13%
+	top: 0
+	color: #ffffff
+	height: 100vh
+	z-index: 1
+	cursor: pointer
+	transition: 0.4s ease all
+	ul
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)
+		li
+			list-style-type: none
+			a
+				color: $accent
+				text-decoration: none
+				transition: 0.2s ease all
+				&:hover
+					color: #ffffff
+.nav.expanded
+	left: 0
+
+.nav-toggle
+	z-index: 2
+	position: fixed
+	top: 30px
+	left: 25px
+	width: 40px
+	height: 20px
+	cursor: pointer
+	transition: 0.3s ease all
+	&:hover
+		opacity: 0.7
+	.nav-toggle-bar, .nav-toggle-bar::after, .nav-toggle-bar::before
+		position: absolute
+		transform: translateY(-50%)
+		top: 50%
+		content: ' '
+		height: 4px
+		background-color: $accent
+		width: 100%
+		transition: 0.3s ease all
+	.nav-toggle-bar
+		margin-top: 0
+	.nav-toggle-bar::after
+		margin-top: 10px
+	.nav-toggle-bar::before
+		margin-top: -10px
+.nav-toggle.expanded
+	left: 20px
+	.nav-toggle-bar
+		background: transparent
+		&::after
+			margin-top: 5px
+			margin-right: 9px
+			transform: rotate(45deg) translateY(-15px)
+		&::before
+			margin-top: -5px
+			margin-left: 9px
+			transform: rotate(-45deg)
+
+.header-mnu
+	h1
+		margin: 0 auto
+		margin-top: 10px
+		max-width: 20px
+
+
+
+
+
+
+
+

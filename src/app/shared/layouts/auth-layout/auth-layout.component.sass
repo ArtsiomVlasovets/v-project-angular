@@ -1,4 +1,43 @@
+@import "../../../theme/sass/style.sass"
+
+.hide-class
+	display: none
+
 .site-header
+	height: 100vh
+	background-repeat: no-repeat
+	background-size: cover
+	color: #fff
+	position: relative
+	&::after
+		content: ' '
+		width: 100%
+		height: auto
+		background-color: #000
+		opacity: 0.5
+		position: absolute
+		top: 0
+		bottom: 0
+		right: 0
+		left: 0
+	.header-column
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-self: center
+		margin: 0 auto
+	.logo
+		padding-left: 30px
+		padding-top: 100px
+		text-align: center    
+	
+.site-header
+    background-image: url('../../../../assets/images/4.jpg')
     &::after
         content: ''
         background-color: #000000

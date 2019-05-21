@@ -1,6 +1,70 @@
+@import "../../theme/sass/style.sass"
+
+
+.header-content
+	position: relative
+	z-index: 99
+	.group
+		position: relative
+		margin: 0 auto
+		margin-bottom: 35px
+		max-width: 300px
+		input
+			font-size: 18px
+			box-sizing: border-box
+			display: block
+			width: 300px
+			border: none
+			background: none
+			border-bottom: 1px solid #757575
+			padding: 10px 10px 10px 5px
+			outline: none
+			caret-color: #757575
+			color: #757575
+			&:focus~label, &:valid~label, &:not(:placeholder-shown)~label
+				top: -20px
+				font-size: 14px
+				color: $accent
+			&:last-child
+		label
+			position: absolute
+			top: 10px
+			left: 5px
+			color: $accent
+			font-size: 18px
+			font-weight: normal
+			pointer-events: none
+			transition: 0.2s ease all
+			-webkit-transition: 0.2s ease all
+		button, a
+			border: none
+			background: none
+			color: $accent
+			outline: none
+			transition: 0.2s ease all
+			margin-top: -20px
+			&:hover
+				color: #ffffff
+				cursor: pointer
+		a
+			float: left
+			text-decoration: none
+			font-size: 12px
+		button
+			float: right
+  
 input:-webkit-autofill
   -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out"
   -webkit-transition-delay: 9999s
   &:hover, &:focus, &:active
     -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out"
     -webkit-transition-delay: 9999s
+
+.group
+  button:disabled
+    color: #999999!important 
+    opacity: 0.5
+
+
+.invalid
+  border-bottom: 1px solid #e32004!important

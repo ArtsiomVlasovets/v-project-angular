@@ -33,13 +33,20 @@ export class RegisterPageComponent implements OnInit {
 
   onSubmit() {
     console.log('this.form.value :', this.form.value);
+    
+    if(this.form.invalid) {
+      alert('this.form.invalid');
+    }
+    
+    this.form.disable()
     this.sub = this.auth.register(this.form.value).subscribe(
       () => {
+        alert('You can login in the system');
         this.router.navigate(['/login'])
       },
       error => {
+        this.form.enable()
         console.log('error', error);
-        
       }
     )
   }
