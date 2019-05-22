@@ -20,6 +20,9 @@ export class LoginPageComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+
+    this.auth.logout()
+
     console.log('Download login');
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),

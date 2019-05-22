@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Statistic } from './../../shared/interfaces/statistic';
 import { StatisticService } from './../../shared/services/statistic.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-statistic-page',
@@ -10,42 +11,24 @@ import { Subscription } from 'rxjs';
 })
 export class StatisticPageComponent implements OnInit {
 
-  statsList: Statistic[] = []
-  sub: Subscription
+  // statsList: Statistic[] = []
+  statsList$: Observable<Statistic[]>
+  loading: Boolean = true
 
   constructor(private stats: StatisticService) {
    }
 
   ngOnInit() {
-    console.log('stats getStats');
-    this.stats.getAllStats().subscribe(stats => {
-      this.statsList = stats;
-      console.log('stats :', stats);
-    },
-    error => {
-      this.statsList[0] = {
-        email: 'aaa@gmail.com',
-        games: 50,
-        age: 11,
-        PPG: 111,
-        RPG: 222,
-        APG: 333
-      } 
-      console.log('error :', error.error.message);
-    }
+    setTimeout(() => {
+      this.loading = false
+    }, 1000);
+    this.statsList$ = this.stats.getAllStats()
+    .pipe(
+      tap(stats => {
+        console.log('getStats', stats);
+      })
     )
   }
 
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    if (this.sub) {
-      this.sub.unsubscribe()
-    }
-  }
-
-  getStats() {
-   
-  }
 
 }

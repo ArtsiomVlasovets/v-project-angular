@@ -19,6 +19,9 @@ export class RegisterPageComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+
+    this.auth.logout()
+
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)])
@@ -34,19 +37,23 @@ export class RegisterPageComponent implements OnInit {
   onSubmit() {
     console.log('this.form.value :', this.form.value);
     
-    if(this.form.invalid) {
-      alert('this.form.invalid');
-    }
-    
     this.form.disable()
     this.sub = this.auth.register(this.form.value).subscribe(
       () => {
         alert('You can login in the system');
-        this.router.navigate(['/login'])
+        this.auth.login(this.form.value).subscribe(
+          () => this.router.navigate(['/statistics']),
+          error => {
+            this.form.enable()
+            console.log('error', error)
+          }  
+        )
+        
       },
       error => {
         this.form.enable()
-        console.log('error', error);
+        alert(error.error.message)
+        console.log('error', error.error.message);
       }
     )
   }

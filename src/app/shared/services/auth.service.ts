@@ -26,12 +26,41 @@ export class AuthService {
         console.log('refreshtoken :', refreshtoken);
         localStorage.setItem('auth-token', authtoken)
         localStorage.setItem('refresh-token', refreshtoken)
+        this.setToken(authtoken)
       })
     )
   }
 
   refresh(refreshtoken: string): Observable<{authtoken: string, refreshtoken: string}> {
-    return this.http.post<{authtoken: string, refreshtoken: string}>('api/auth/refresh', refreshtoken)
+    alert('You auth-token is expired')
+    console.log('refreshtokenInService :', refreshtoken);
+    return this.http.post<{authtoken: string, refreshtoken: string}>('api/auth/refresh', {refreshtoken: refreshtoken})
+    .pipe(
+      tap(({authtoken, refreshtoken}) => {
+        console.log('authtoken :', authtoken);
+        console.log('refreshtoken :', refreshtoken);
+        localStorage.setItem('auth-token', authtoken)
+        localStorage.setItem('refresh-token', refreshtoken)
+        this.setToken(authtoken)
+      })
+    )
+  }
+
+  isAuthenticated() {
+    return !!this.authtoken
+  }
+  
+  getToken() {
+    return this.authtoken
+  }
+
+  setToken(token: string) {
+    this.authtoken = token
+  }
+
+  logout() {
+    this.setToken(null)
+    localStorage.clear()
   }
 
 }
