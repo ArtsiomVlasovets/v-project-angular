@@ -29,7 +29,7 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": ["src/app/theme/js/scripts.min.js"],
+            "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {

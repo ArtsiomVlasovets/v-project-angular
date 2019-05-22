@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteLayoutComponent implements OnInit {
 
+  toggled: Boolean = false
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle() {
+    console.log('toggle');
+    if (this.toggled) {
+      this.toggled = false
+      return
+    }
+    this.toggled = true
+
   }
 
 }

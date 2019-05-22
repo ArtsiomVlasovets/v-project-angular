@@ -1,8 +1,8 @@
 <header class="header-mnu">
-  <div class="nav-toggle">
+  <div class="nav-toggle" (click)="toggle()" [ngClass]="{expanded: toggled === true}">
     <div class="nav-toggle-bar"></div>
   </div>
-  <nav class="nav">
+  <nav class="nav" [ngClass]="{expanded: toggled === true}">
     <ul>
       <li><a href="">Stats</a></li>
       <li><a href="">History</a></li>
