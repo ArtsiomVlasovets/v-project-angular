@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ElementsService } from './../../services/elements.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-site-layout',
@@ -7,21 +9,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteLayoutComponent implements OnInit {
 
-  toggled: Boolean = false
+  @ViewChild('navigate') navigate: ElementRef
 
-  constructor() { }
+  sub: Subscription
+  toggled: Boolean = false
+  links: any[]
+ 
+  constructor( private elements: ElementsService) { }
 
   ngOnInit() {
+    this.getMenuLinks()
+  }
+
+  ngOnDestroy(): void {
+    if(this.sub) {
+      this.sub.unsubscribe()
+    }
   }
 
   toggle() {
-    console.log('toggle');
     if (this.toggled) {
       this.toggled = false
       return
     }
     this.toggled = true
-
   }
+
+  closeToggle($event) {
+    if($event.target.tagName != 'NAV' && $event.target.tagName != 'DIV' && 
+      this.navigate.nativeElement.classList.contains('expanded')) {
+      this.toggled = false
+    }
+  }
+
+  getMenuLinks() {
+    this.sub = this.elements.getMenuLimks().subscribe(
+      (links) => {
+        this.links = links 
+      },
+      error => {
+        console.log(error.error.message);
+      }
+    )
+  }
+
+  
 
 }

@@ -1,0 +1,41 @@
+<div class="main-block">
+
+  <ng-template #preloader>
+    <app-preloader></app-preloader>
+  </ng-template>
+
+  <table *ngIf="!loading; else preloader" cellpadding="0" cellspacong="0">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Place</th>
+        <th>Price</th>
+        <th>People</th>
+        <th>Things</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="statsList" *ngFor="let stats of statsList$ | async; trackBy: todosTrackFn">
+        <td>
+          25 - 05 - 2019
+        </td>
+        <td>
+          23:00 PM
+        </td>
+        <td>
+          Shool #1
+        </td>
+        <td>
+          5 BYN
+        </td>
+        <td>
+          18 + 2
+        </td>
+        <td>
+          Bags
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

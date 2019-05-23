@@ -1,0 +1,45 @@
+.main-block
+    margin-top: 50px
+    div
+    display: flex
+    flex-direction: column
+    align-items: center
+
+
+table
+    width: 80%
+    border-collapse: collapse
+    border-spacing: 0
+    thead
+        position: relative
+        background-color: #fff
+        width: 100%
+        top: 0
+        border-bottom: 1px solid rgba(219, 223, 244, .6)
+        tr
+            position: relative
+            width: 100%
+            th
+                width: 19%
+                padding-bottom: 27px
+                color: #dbdff4
+                line-height: 1
+                text-align: left
+    tbody
+        overflow: auto
+
+        tr
+            position: relative
+            td
+                padding-top: 30px
+                color: rgba(160,168,220,.9)
+                line-height: 1
+    &::after
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 80%
+        content: ""
+        z-index: 0
+        background: linear-gradient(0deg, #ffffff 5%, rgba(19, 20, 25 , 0))

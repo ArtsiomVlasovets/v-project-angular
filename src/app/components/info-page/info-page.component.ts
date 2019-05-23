@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Statistic } from './../../shared/interfaces/statistic';
-import { StatisticService } from './../../shared/services/statistic.service';
-import { Subscription, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Statistic } from 'src/app/shared/interfaces/statistic';
+import { StatisticService } from 'src/app/shared/services/statistic.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-statistic-page',
-  templateUrl: './statistic-page.component.html',
-  styleUrls: ['./statistic-page.component.sass']
+  selector: 'app-info-page',
+  templateUrl: './info-page.component.html',
+  styleUrls: ['./info-page.component.sass']
 })
-export class StatisticPageComponent implements OnInit {
+export class InfoPageComponent implements OnInit {
 
   statsList$: Observable<Statistic[]>
   loading: Boolean = true
@@ -30,6 +30,5 @@ export class StatisticPageComponent implements OnInit {
   }
 
   todosTrackFn = (index, stats) => stats.email;
-
 
 }

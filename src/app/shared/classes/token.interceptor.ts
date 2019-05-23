@@ -22,6 +22,7 @@ TokenInterceptor implements HttpInterceptor {
         //         }
         //     })
         // }
+        console.log('intercepterror1', req);
         return next.handle(req).pipe(
             catchError(
                 (error: HttpErrorResponse) => this.handleError(error)
@@ -37,8 +38,17 @@ TokenInterceptor implements HttpInterceptor {
             if(potentialRefreshToken) {
                 console.log('potentialRefreshToken :', potentialRefreshToken);
                 const sub = this.auth.refresh(localStorage.getItem('refresh-token')).subscribe(
-                    () => {
+                    (status) => {
+                        console.log('status1 :', status);
                         alert('Tokens was changed')
+                        if(status.authtoken) {
+                            
+                            setTimeout(() => {
+                                console.log('status2 :', status);
+                                this.router.navigate(['/login']);
+
+                            }, 2000);
+                        }
                       }, error => {
                         alert(error.error.message);
                         if(error.error.message === 'refresh-token is invalid') {
@@ -58,8 +68,8 @@ TokenInterceptor implements HttpInterceptor {
         return throwError(error)
     }
 
-    private redirect() {
-        this.router.navigate(['/login'], {
+    private redirect(route: string = '/login') {
+        this.router.navigate([route], {
             queryParams: {
                 tokensFailed: true
             }

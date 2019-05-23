@@ -1,14 +1,15 @@
-<header class="header-mnu">
+<header class="header-mnu" (click)="closeToggle($event)">
   <div class="nav-toggle" (click)="toggle()" [ngClass]="{expanded: toggled === true}">
     <div class="nav-toggle-bar"></div>
   </div>
-  <nav class="nav" [ngClass]="{expanded: toggled === true}">
+  <nav #navigate class="nav" [ngClass]="{expanded: toggled === true}">
     <ul>
-      <li><a href="">Stats</a></li>
-      <li><a href="">History</a></li>
-      <li><a href="">News</a></li>
-      <li><a href="">Info</a></li>
-      <li><a href="">Account</a></li>
+      <li *ngFor="let link of links; trackBy">
+        <a routerLink='/{{link.route}}' (click)="toggled = false">
+          {{link.name}}
+        </a>
+      </li>
+
     </ul>
   </nav>
     <router-outlet></router-outlet>

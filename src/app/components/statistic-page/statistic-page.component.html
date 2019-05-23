@@ -1,14 +1,10 @@
 <div class="main-block">
-    <div *ngIf="!loading; else preloader">
 
-        <ng-template #preloader>
-            <app-preloader></app-preloader>
-        </ng-template>
-    </div>
+    <ng-template #preloader>
+        <app-preloader></app-preloader>
+    </ng-template>
 
-
-
-    <table cellpadding="0" cellspacong="0">
+    <table *ngIf="!loading; else preloader" cellpadding="0" cellspacong="0">
         <thead>
             <tr>
                 <th>Email</th>
@@ -20,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="statsList" *ngFor="let stats of statsList$ | async">
+            <tr class="statsList" *ngFor="let stats of statsList$ | async; trackBy: todosTrackFn">
                 <td>
                     {{stats.email}}
                 </td>
@@ -41,46 +37,46 @@
                 </td>
             </tr>
             <tr class="statsList" *ngFor="let stats of statsList$ | async">
-                    <td>
-                        {{stats.email}}
-                    </td>
-                    <td>
-                        {{stats.games}}
-                    </td>
-                    <td>
-                        {{stats.age}}
-                    </td>
-                    <td>
-                        {{stats.PPG}}
-                    </td>
-                    <td>
-                        {{stats.RPG}}
-                    </td>
-                    <td>
-                        {{stats.APG}}
-                    </td>
-                </tr>
+                <td>
+                    {{stats.email}}
+                </td>
+                <td>
+                    {{stats.games}}
+                </td>
+                <td>
+                    {{stats.age}}
+                </td>
+                <td>
+                    {{stats.PPG}}
+                </td>
+                <td>
+                    {{stats.RPG}}
+                </td>
+                <td>
+                    {{stats.APG}}
+                </td>
+            </tr>
 
-                <tr class="statsList" *ngFor="let stats of statsList$ | async">
-                        <td>
-                            {{stats.email}}
-                        </td>
-                        <td>
-                            {{stats.games}}
-                        </td>
-                        <td>
-                            {{stats.age}}
-                        </td>
-                        <td>
-                            {{stats.PPG}}
-                        </td>
-                        <td>
-                            {{stats.RPG}}
-                        </td>
-                        <td>
-                            {{stats.APG}}
-                        </td>
-                    </tr>
+            <tr class="statsList" *ngFor="let stats of statsList$ | async">
+                <td>
+                    {{stats.email}}
+                </td>
+                <td>
+                    {{stats.games}}
+                </td>
+                <td>
+                    {{stats.age}}
+                </td>
+                <td>
+                    {{stats.PPG}}
+                </td>
+                <td>
+                    {{stats.RPG}}
+                </td>
+                <td>
+                    {{stats.APG}}
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

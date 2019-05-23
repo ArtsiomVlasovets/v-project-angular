@@ -7,12 +7,12 @@ import { shareReplay } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class StatisticService {
+export class ElementsService {
 
   constructor(  private http: HttpClient) { }
 
-  getAllStats(): Observable<Statistic[]> {
-    return this.http.get<Statistic[]>('api/stats/')
+  getMenuLimks(): Observable<any> {
+    return this.http.get<any[]>('api/elements/menu')
     .pipe(
       shareReplay()
     )

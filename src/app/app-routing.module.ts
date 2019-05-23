@@ -6,6 +6,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { StatisticPageComponent } from './components/statistic-page/statistic-page.component';
 import { AuthGuard } from './shared/classes/auth.guard';
+import { InfoPageComponent } from './components/info-page/info-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   {
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [
       {path: 'statistics', component: StatisticPageComponent},
+      {path: 'info', component: InfoPageComponent}
     ]
   },
   {

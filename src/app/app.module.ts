@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './shared/classes/token.interceptor';
 import { PreloaderComponent } from './shared/components/preloader/preloader.component';
+import { InfoPageComponent } from './components/info-page/info-page.component';
 
 
 console.log('localStorage.getItem :', localStorage.getItem('auth-token'));
@@ -31,6 +32,8 @@ export function tokenGetter() {
     AuthLayoutComponent,
     SiteLayoutComponent,
     PreloaderComponent,
+    InfoPageComponent,
+    InfoPageComponent,
   ],
   imports: [
     BrowserModule,
